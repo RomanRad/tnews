@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/news_details"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/default_text_size"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:padding="@dimen/padding"/>
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawablePadding="@dimen/padding"
+        android:drawableTop="@drawable/sad_phone_wrapper"
+        android:text="@string/no_data"
+        android:textSize="@dimen/default_text_size"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <ProgressBar
+        android:id="@+id/loading_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/progress_drawable"
+        android:visibility="gone"/>
+</RelativeLayout>
