@@ -30,13 +30,13 @@ public class NewsRepository implements NewsDataSource {
         mNews = new HashMap<>();
         mNewsLocalDataSource = new NewsLocalDataSource(context);
         mNewsRemoteDataSource = new NewsRemoteDataSource();
-        f(mNewsLocalDataSource, null, true);
+        loadNews(mNewsLocalDataSource, null, true);
     }
 
     @Override
     public void getNews(LoadCallback<List<News>> callback) {
         if (mNews.isEmpty()) {
-            f(mNewsRemoteDataSource, callback, true);
+            loadNews(mNewsRemoteDataSource, callback, true);
         } else {
             setupNews(callback);
         }
@@ -80,7 +80,7 @@ public class NewsRepository implements NewsDataSource {
         mNewsLocalDataSource.dropData();
     }
 
-    private void f(NewsDataSource newsDataSource, @Nullable final LoadCallback<List<News>> callback, final boolean forceUpdate) {
+    private void loadNews(NewsDataSource newsDataSource, @Nullable final LoadCallback<List<News>> callback, final boolean forceUpdate) {
         newsDataSource.getNews(new LoadCallback<List<News>>() {
             @Override
             public void onDataLoaded(List<News> data) {
